@@ -1,0 +1,186 @@
+%% origial https://giuliavattuone.com/papers/jmp/
+
+\documentclass[aspectratio=169]{beamer}
+\setbeamersize{text margin left=0.5cm, text margin right=1cm}
+%\setlength{\textheight}{23cm}
+%\setlength{\textwidth}{15cm} 
+\usepackage{babel}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+% navigation
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}
+{
+	\begin{tikzpicture}[remember picture,overlay]
+		\ifnum\insertframenumber>1
+		\node[anchor=south east] at (current page.south east) {\scriptsize \insertframenumber/\inserttotalframenumber};
+		\fi
+	\end{tikzpicture}
+}
+
+% colors
+\definecolor{indigo}{RGB}{13, 61, 86}
+\definecolor{dgray}{RGB}{85,95,97}
+\definecolor{borderColor}{RGB}{13, 61, 86}
+\definecolor{bgColor}{RGB}{194, 207, 213}
+\setbeamercolor{item}{fg=indigo}
+\setbeamercolor{frametitle}{fg=indigo}
+\setbeamercolor{section in toc}{fg=indigo}
+\setbeamercolor{section in head/foot}{fg=indigo}
+\setbeamercolor{title}{fg=indigo}
+\setbeamercolor{date}{fg=dgray}
+
+% button
+\setbeamertemplate{button}{\tikz
+		\node[
+		inner xsep=8pt,
+		inner ysep=2pt,
+		draw=indigo,
+		fill=bgColor,
+		rounded corners=5pt
+		]  {\small \insertbuttontext};}
+\setbeamercolor{button}{bg=bgColor,fg=black}
+\setbeamercolor{button border}{fg=indigo}
+
+% item 
+\setbeamertemplate{itemize item}[diamond] 
+\setbeamercolor{itemize item}{fg=indigo} 
+\setbeamerfont{itemize item}{size=\normalsize} 
+\setlength{\leftmargini}{0.3em}
+\setlength{\leftmarginii}{0.6em} 
+\setlength{\leftmarginiii}{0.9em}  
+
+% font 
+\useoutertheme{default}
+\usefonttheme{serif}
+\setbeamerfont{title}{family=\rmfamily, shape=\scshape}
+\setbeamerfont{frametitle}{family=\rmfamily, shape=\scshape}
+\setbeamerfont{section in toc}{family=\rmfamily, shape=\scshape}
+
+% title page
+\setbeamertemplate{title page}
+{
+	\begin{center}
+		\vskip5em
+		{\usebeamerfont{title}\color{indigo}\inserttitle\par}
+		{\color{indigo}\rule{0.6\textwidth}{0.4pt}} % Horizontal rule
+		\vskip1.5em
+		{\usebeamerfont{author}\color{black}\insertauthor\par}
+		\vskip1em
+		{\usebeamerfont{institute}\color{black}\insertinstitute\par}
+		\vskip1em
+		{\usebeamerfont{date}\color{dgray}\insertdate\par}
+	\end{center}
+}
+
+\title{Worker Sorting \\ and the Gender Wage Gap}
+\author{Giulia Vattuone \\ SOFI, Stockholm University}
+\institute{Society for Economic Dynamics Annual Meeting}
+\date{Barcelona, June 27-29, 2024}
+
+% define 
+\newcommand{\customtitle}[1]{
+	\begin{flushleft}
+		\usebeamerfont{frametitle} 
+		\usebeamercolor[fg]{frametitle}
+   		\vspace{2pt}
+		{\scalebox{0.8}{#1}}
+		\vspace{2pt}
+	\end{flushleft}
+}
+
+
+\AtBeginSection[]{
+	\begin{frame}{Outline}
+		\tableofcontents[currentsection,currentsubsection]
+		%\addtocounter{framenumber}{-1}
+	\end{frame}
+} 
+
+\begin{document}
+\frame{\titlepage}
+\begin{frame}
+	\frametitle{Introduction}
+	\begin{itemize}
+		\item[$\diamond$] This result is confirmed across multiple countries.
+		\item[$\diamond$] Not due to lack of skills or experience
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{This paper}
+	\customtitle{Research Question:} 
+	
+	\customtitle{Data and Method:}
+
+\end{frame}
+
+\begin{frame}{Contribution}
+\begin{itemize}
+	\item[$\bullet$] \textit{Literature that \textbf{quantifies the sorting component} of the gender wage gap}
+	\begin{itemize}
+		\item[$\diamond$] {\footnotesize \textcolor{dgray}{(Card et al., 2016; Cardoso et al., 2016; Casarico and Lattanzio, 2024; Palladino et al., 2021)}}
+	\end{itemize}
+$\Longrightarrow$	I gauge the relative importance of key mobility components driving it
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents
+\end{frame}
+
+\section{1) Revealed preference approach and Statistical model}
+\begin{frame}{Revealed preference approach}
+	Data on observed firm-to-firm transitions are informative about:
+\end{frame}
+
+\section{2) Data}
+\begin{frame}{French Matched Employer-Employee Data}
+	Data source
+\end{frame}
+
+\section{3) Clustering results}
+\begin{frame}[label=refthis1]{Latent types capture diverse career trajectories}
+	Stagnant wages irrespective of experience levels for low-wage worker types
+\end{frame}
+
+\section{4) Worker Sorting and the Gender Wage Gap}
+\begin{frame}{Worker Sorting}
+	Sorting is the stationary allocation of worker types and firm classes
+\end{frame}
+
+\section{5) Conclusions}
+\begin{frame}[label = eatimation]{Estimation}
+\begin{itemize}
+\item[$\diamond$] \textcolor{indigo}{\textbf{First step:}} link to website: \href{https://www.microsoft.com/zh-cn/}{\beamerbutton{K-Means Algorithm}}\\
+
+$\rightarrow$ firms in same class are similar in gender-specific wage distributions, female share, size
+
+\vspace{1cm}
+
+\item[$\diamond$] \textcolor{indigo}{\textbf{Second step:}} conditional on frm classes, EM algorithm to estimate parameters and
+classify workers\\
+
+$\rightarrow$ Likelihood function is non-linear in the parameters
+
+$\rightarrow$ link to another frame:\hyperlink{refthis1}{\beamergotobutton{{EM+MM Algorithm}}}\quad \textcolor{dgray}{(Lentz, Piyapromdee, and Robin, 2023)}
+\end{itemize}
+\vskip 3cm
+\centering
+\hyperlink{sort}{\beamergotobutton{Data used to discretise}}
+\quad
+\href{https://www.microsoft.com/zh-cn/}{\beamerbutton{Model fit}}
+\end{frame}
+
+\section{6) Worker Sorting and the Gender Wage Gap}
+\begin{frame}[label = sort]{Worker Sorting}
+	Sorting is the stationary allocation of worker types and firm classes \hyperlink{eatimation}{\beamerreturnbutton{Data used to discretise}}
+	
+	$$\mathcal{L}_i(\theta|l_i,x_{i1},C)=\Pr\Big(l_i,k_{j(i,1)}\mid x_{i1}\Big)$$
+\end{frame}
+\end{document}
